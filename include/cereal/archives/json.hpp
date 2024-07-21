@@ -541,13 +541,11 @@ namespace cereal
           //! This provides an exception-free option to search ahead
           inline size_t lookAhead( const char * searchName ) const
           {
-            const auto len = std::strlen( searchName );
             size_t index = 0;
             for( auto it = itsMemberItBegin; it != itsMemberItEnd; ++it, ++index )
             {
               const auto currentName = it->name.GetString();
-              if( ( std::strncmp( searchName, currentName, len ) == 0 ) &&
-                  ( std::strlen( currentName ) == len ) )
+              if( std::strcmp( searchName, currentName ) == 0 )
               {
                 return index;
               }
