@@ -119,7 +119,7 @@ namespace cereal
         void serialize(Archive & archive)
         {
           // when we serialize an edge, we'll defer serializing the associated node
-          archive( cereal::defer( connection ),
+          archive( cereal::defer_serialization( connection ),
                    some_value );
         }
       };
@@ -146,7 +146,7 @@ namespace cereal
       @relates DeferredData
       @ingroup Utility */
   template <class T> inline
-  DeferredData<T> defer( T && value )
+  DeferredData<T> defer_serialization( T && value )
   {
     return {std::forward<T>(value)};
   }

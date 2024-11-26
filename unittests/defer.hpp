@@ -75,11 +75,11 @@ struct DeferNode
   void serialize( Archive & ar )
   {
     ar( id, w,
-        cereal::defer( iser ),
-        cereal::defer( ispl ),
-        cereal::defer( eser ),
-        cereal::defer( espl ),
-        cereal::defer( relations ),
+        cereal::defer_serialization( iser ),
+        cereal::defer_serialization( ispl ),
+        cereal::defer_serialization( eser ),
+        cereal::defer_serialization( espl ),
+        cereal::defer_serialization( relations ),
         z );
   }
 
