@@ -100,7 +100,7 @@ namespace meta
     }
 
     template<template<typename...> class Function>
-    struct defer
+    struct defer_
     {
         template<typename... Args>
         struct apply
@@ -746,7 +746,7 @@ namespace meta
     using pack_any_of_t = pack_foldl_t<or_, false_, Bs...>;
 
     template<typename... Seqs>
-    using join = foldl<defer<cat>, apply_functor<pack_get_t<0, Seqs...>>, apply_functor<pack_get_t<0, Seqs...>, Seqs...>>;
+    using join = foldl<defer_<cat>, apply_functor<pack_get_t<0, Seqs...>>, apply_functor<pack_get_t<0, Seqs...>, Seqs...>>;
     template<typename... Seqs>
     using join_t = type_t<join<Seqs...>>;
 
